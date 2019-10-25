@@ -6,5 +6,7 @@ The user will set parameters like season, size of the garden, and low/medium/hig
 with push notifications! it also could get connected to weather stations to prevent the water waste by alarming the user about the rainy days.
 
 Note: Oct 25 - Sarah uploads structure to Github
+
 Built with API 23 Android 6.0
+
 Sarah has a Nexus 6P
