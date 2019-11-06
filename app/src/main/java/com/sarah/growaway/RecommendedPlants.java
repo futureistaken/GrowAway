@@ -16,6 +16,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.squareup.picasso.Picasso;
 
 import android.util.Log;
 import android.widget.ImageView;
@@ -49,6 +50,7 @@ public class RecommendedPlants extends AppCompatActivity {
         WaterText = findViewById(R.id.water_text);
         SunText = findViewById(R.id.sun_text);
 
+      //  Picasso.get().load("http://i.imgur.com/DvpvklR.png").into(PlantImage);
 
         toPref = findViewById(R.id.toPrefButton);
         toPref.setOnClickListener(new View.OnClickListener(){
@@ -80,18 +82,19 @@ public class RecommendedPlants extends AppCompatActivity {
         db.collection("plants").get().addOnSuccessListener(queryDocumentSnapshots -> {
             ArrayList<Plant> plants = new ArrayList<>();
             for (DocumentSnapshot doc: queryDocumentSnapshots) {
+                String image = doc.getString("Image");
                 String name = doc.getString("Name");
                 String water = doc.getString("Water");
                 String sun = doc.getString("Sun");
 
 
-              plants.add(new Plant(name, water, sun));
+              plants.add(new Plant(image, name, water, sun));
             }
 
             Random random = new Random();
             Plant randomPlant = plants.get(random.nextInt(plants.size()));
 
-        //    Picasso.get().load("http://i.imgur.com/DvpvklR.png").into(imageView);
+            Picasso.get().load(randomPlant.getImage()).into(PlantImage);
             NameText.setText(randomPlant.getName());
             WaterText.setText(randomPlant.getWater());
             SunText.setText(randomPlant.getSun());
