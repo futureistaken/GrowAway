@@ -18,6 +18,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -31,6 +32,7 @@ public class RecommendedPlants extends AppCompatActivity {
     private TextView NameText;
     private TextView WaterText;
     private TextView SunText;
+    private ImageView PlantImage;
 
     private String name;
 
@@ -42,6 +44,7 @@ public class RecommendedPlants extends AppCompatActivity {
         setContentView(R.layout.activity_recommended_plants);
 
         db = FirebaseFirestore.getInstance();
+        PlantImage = findViewById(R.id.plantImage);
         NameText = findViewById(R.id.name_text);
         WaterText = findViewById(R.id.water_text);
         SunText = findViewById(R.id.sun_text);
@@ -88,7 +91,7 @@ public class RecommendedPlants extends AppCompatActivity {
             Random random = new Random();
             Plant randomPlant = plants.get(random.nextInt(plants.size()));
 
-
+        //    Picasso.get().load("http://i.imgur.com/DvpvklR.png").into(imageView);
             NameText.setText(randomPlant.getName());
             WaterText.setText(randomPlant.getWater());
             SunText.setText(randomPlant.getSun());
