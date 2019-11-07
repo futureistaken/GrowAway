@@ -8,7 +8,7 @@ object SavedFilters {
 
     fun SavedFilters() {
         this.sunlightAmount = -1
-        this.maintenanceAmount = -1
+        this.maintenanceAmount = false
         this.waterAmount = -1
     }
 
