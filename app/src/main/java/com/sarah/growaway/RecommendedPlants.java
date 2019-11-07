@@ -39,7 +39,6 @@ public class RecommendedPlants extends AppCompatActivity {
     private ImageView PlantImage;
 
     private String name;
-    com.firebase.ui.FirebaseListAdapter<String> myAdapter;
 
 
 
@@ -61,16 +60,6 @@ public class RecommendedPlants extends AppCompatActivity {
 
         listView.setAdapter(myAdapter);*/
 
-        Firebase ref = new Firebase("https://plantdatabase-266a7..firebaseio.com";
-        ListAdapter adapter = new FirebaseListAdapter<Plant>(this, Plant.class, R.layout.activity_recommended_plants, mRef)
-        {
-            protected void populateView(View view, Plant plant)
-            {
-                ((TextView)view.findViewById(android.R.id.text1)).setText("Name");
-                ((TextView)view.findViewById(R.id.name_text)).setText(Plant.getName());
-            }
-        };
-        listView.setListAdapter(adapter);
 
 
         /*toPref = findViewById(R.id.toPrefButton);
