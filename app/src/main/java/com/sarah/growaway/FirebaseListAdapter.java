@@ -1,11 +1,28 @@
+/*
 package com.sarah.growaway;
 
 
-    com.firebase.ui.FirebaseListAdapter<String> myAdapter;
+    import com.firebase.ui.FirebaseListAdapter<String> myAdapter;
+    import com.firebase.ui.database.FirebaseListAdapter;
+
+    import com.firebase.ui.database.FirebaseListAdapter;
+    import com.google.firebase.FirebaseApp;
+    import com.google.firebase.database.DataSnapshot;
+    import com.google.firebase.database.DatabaseError;
+    import com.google.firebase.database.DatabaseReference;
+    import com.google.firebase.database.FirebaseDatabase;
+    import com.google.firebase.database.ValueEventListener;
+    import com.google.firebase.firestore.DocumentSnapshot;
+    import com.google.firebase.firestore.FirebaseFirestore;
+    import com.squareup.picasso.Picasso;
 
 
 public class FirebaseListAdapter {
+
+    Firebase mRef;
+
 }
+*/
 
 
 
