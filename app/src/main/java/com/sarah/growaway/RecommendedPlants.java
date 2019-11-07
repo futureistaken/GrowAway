@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.os.Bundle;
 import android.widget.EditText;
 
+import com.firebase.ui.database.FirebaseListAdapter;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -20,6 +21,7 @@ import com.squareup.picasso.Picasso;
 
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -37,6 +39,7 @@ public class RecommendedPlants extends AppCompatActivity {
     private ImageView PlantImage;
 
     private String name;
+    com.firebase.ui.FirebaseListAdapter<String> myAdapter;
 
 
 
@@ -53,10 +56,21 @@ public class RecommendedPlants extends AppCompatActivity {
 
         ArrayList<Plant> plantList = getPlants();
 
-        ListView listView = new ListView(getApplicationContext());
+        /*ListView listView = new ListView(getApplicationContext());
         RecommendedPlantsAdapter myAdapter = new RecommendedPlantsAdapter(getApplicationContext(), plantList);
 
-        listView.setAdapter(myAdapter);
+        listView.setAdapter(myAdapter);*/
+
+        Firebase ref = new Firebase("https://plantdatabase-266a7..firebaseio.com";
+        ListAdapter adapter = new FirebaseListAdapter<Plant>(this, Plant.class, R.layout.activity_recommended_plants, mRef)
+        {
+            protected void populateView(View view, Plant plant)
+            {
+                ((TextView)view.findViewById(android.R.id.text1)).setText("Name");
+                ((TextView)view.findViewById(R.id.name_text)).setText(Plant.getName());
+            }
+        };
+        listView.setListAdapter(adapter);
 
 
         /*toPref = findViewById(R.id.toPrefButton);
