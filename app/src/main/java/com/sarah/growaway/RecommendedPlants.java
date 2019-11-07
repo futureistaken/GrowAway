@@ -20,6 +20,7 @@ import com.squareup.picasso.Picasso;
 
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -50,9 +51,15 @@ public class RecommendedPlants extends AppCompatActivity {
         WaterText = findViewById(R.id.water_text);
         SunText = findViewById(R.id.sun_text);
 
-      //  Picasso.get().load("http://i.imgur.com/DvpvklR.png").into(PlantImage);
+        ArrayList<Plant> plantList = getPlants();
 
-        toPref = findViewById(R.id.toPrefButton);
+        ListView listView = new ListView(getApplicationContext());
+        RecommendedPlantsAdapter myAdapter = new RecommendedPlantsAdapter(getApplicationContext(), plantList);
+
+        listView.setAdapter(myAdapter);
+
+
+        /*toPref = findViewById(R.id.toPrefButton);
         toPref.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -62,23 +69,41 @@ public class RecommendedPlants extends AppCompatActivity {
             }
 
 
+        });*/
+
+
+
+
+
+    }
+
+
+
+    private ArrayList<Plant> getPlants() {
+        ArrayList<Plant> plants = new ArrayList<>();
+        db.collection("plants").get().addOnSuccessListener(queryDocumentSnapshots -> {
+
+            for (DocumentSnapshot doc : queryDocumentSnapshots) {
+                String image = doc.getString("Image");
+                String name = doc.getString("Name");
+                String water = doc.getString("Water");
+                String sun = doc.getString("Sun");
+
+
+                plants.add(new Plant(image, name, water, sun));
+            }
         });
+        //want to wait until database function is done
+        //FirebaseListAdapter returns an adapter
+        return plants;
 
-
-
-    }
-
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        populateRandomProfile();
     }
 
 
 
 
-    private void populateRandomProfile() {
+
+ /*   private void populateRandomProfile() {
         db.collection("plants").get().addOnSuccessListener(queryDocumentSnapshots -> {
             ArrayList<Plant> plants = new ArrayList<>();
             for (DocumentSnapshot doc: queryDocumentSnapshots) {
@@ -100,7 +125,12 @@ public class RecommendedPlants extends AppCompatActivity {
             SunText.setText(randomPlant.getSun());
        //     Log.d("Name text is ", randomPlant.getName());
         });
-    }
+    }*/
+
+
+
+
+
 
 
 }
