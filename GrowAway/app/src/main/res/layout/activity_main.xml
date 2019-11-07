@@ -29,16 +29,21 @@
         android:id="@+id/plantImage"
         android:layout_width="150dp"
         android:layout_height="200dp"
-        android:layout_margin="20dp"
-        android:contentDescription="Image of Plant"
-        tools:layout_editor_absoluteX="33dp"
-        tools:layout_editor_absoluteY="170dp" />
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="192dp"
+        android:layout_marginEnd="217dp"
+        android:layout_marginBottom="339dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/name_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
+        app:layout_constraintLeft_toRightOf="@id/plantImage"
+        app:layout_constraintTop_toBottomOf="@id/textView"
         />
 
     <TextView
@@ -55,13 +60,10 @@
         android:id="@+id/sun_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/water_text"
         app:layout_constraintBottom_toTopOf="@id/startButton"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        />
-
-
+        app:layout_constraintTop_toBottomOf="@id/water_text" />
 
 
     <Button
