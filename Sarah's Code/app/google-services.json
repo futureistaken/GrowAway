@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "486074544512",
+    "firebase_url": "https://plantdatabase-266a7.firebaseio.com",
+    "project_id": "plantdatabase-266a7",
+    "storage_bucket": "plantdatabase-266a7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:486074544512:android:6bd1d7798c0702324b5165",
+        "android_client_info": {
+          "package_name": "com.sarah.growaway"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "486074544512-eqvcocf7rv0q8r23imtsuavaedje7p4b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sarah.growaway",
+            "certificate_hash": "ef8bea0f0e0adb7ac01410dd5dcb4b235f9b4ba9"
+          }
+        },
+        {
+          "client_id": "486074544512-b34emnejadcobjeig1bcqp3ik8e28n54.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB290vFvT36KzEJ5OK_Pwp07d5SR85Kr_M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "486074544512-b34emnejadcobjeig1bcqp3ik8e28n54.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
