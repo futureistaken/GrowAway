@@ -14,8 +14,8 @@ tools:context=".Preferences">
     android:layout_marginStart="30dp"
     android:layout_marginTop="11dp"
     android:layout_marginEnd="30dp"
-    android:max="10"
-    android:progress="5"
+    android:max="2"
+    android:progress="1"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -72,7 +72,7 @@ tools:context=".Preferences">
     android:layout_marginStart="32dp"
     android:layout_marginTop="78dp"
     android:layout_marginBottom="10dp"
-    android:text="Sunlight Amount Needed?"
+    android:text="Sunlight Amount Needed?  (Low, Medium, High)"
     app:layout_constraintBottom_toTopOf="@+id/sunBar"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/toolbar" />
@@ -89,15 +89,15 @@ tools:context=".Preferences">
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/sunBar" />
 
-<Switch
-    android:id="@+id/maintenanceSwitch"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="75dp"
-    android:text="High Maintenance? "
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/waterRadio" />
+<!--<Switch-->
+<!--    android:id="@+id/maintenanceSwitch"-->
+<!--    android:layout_width="wrap_content"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:layout_marginTop="75dp"-->
+<!--    android:text="High Maintenance? "-->
+<!--    app:layout_constraintEnd_toEndOf="parent"-->
+<!--    app:layout_constraintStart_toStartOf="parent"-->
+<!--    app:layout_constraintTop_toBottomOf="@+id/waterRadio" />-->
 
 <Button
     android:id="@+id/saveButton"
