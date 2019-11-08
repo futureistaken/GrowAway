@@ -88,6 +88,7 @@ public class RecommendedPlants extends AppCompatActivity {
 
             for (DocumentSnapshot doc : queryDocumentSnapshots) {
                 String image = doc.getString("Image");
+                //String description = doc.getString("Description");
                 String name = doc.getString("Name");
                 String water = doc.getString("Water");
                 String sun = doc.getString("Sun");

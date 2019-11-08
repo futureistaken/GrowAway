@@ -33,6 +33,7 @@
         android:layout_marginTop="192dp"
         android:layout_marginEnd="217dp"
         android:layout_marginBottom="339dp"
+        android:contentDescription="Image of Plant"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,29 +43,43 @@
         android:id="@+id/name_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintLeft_toRightOf="@id/plantImage"
-        app:layout_constraintTop_toBottomOf="@id/textView"
-        />
+        android:textSize="20dp"
+        android:layout_marginStart="240dp"
+        android:layout_marginTop="192dp"
+        android:layout_marginEnd="71dp"
+        android:layout_marginBottom="489dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/water_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/sun_text"
-        app:layout_constraintHorizontal_bias="0.742"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/name_text" />
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+
+        android:layout_marginStart="240dp"
+        android:layout_marginTop="266dp"
+        android:layout_marginEnd="71dp"
+        android:layout_marginBottom="415dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/sun_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/startButton"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/water_text" />
+        android:layout_width="100dp"
+        android:layout_height="50dp"
 
+        android:layout_marginStart="240dp"
+        android:layout_marginTop="340dp"
+        android:layout_marginEnd="71dp"
+        android:layout_marginBottom="341dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/startButton"

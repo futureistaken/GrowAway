@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView WaterText;
     private TextView SunText;
     private ImageView PlantImage;
+   // private TextView DescriptionText;
 
     private String name;
 
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         NameText = findViewById(R.id.name_text);
         WaterText = findViewById(R.id.water_text);
         SunText = findViewById(R.id.sun_text);
+      //  DescriptionText = findViewById(R.id.description_text);
 
 
 
@@ -53,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
                 NameText = findViewById(R.id.name_text);
                 WaterText = findViewById(R.id.water_text);
                 SunText = findViewById(R.id.sun_text);
+               // DescriptionText = findViewById(R.id.description_text);
 
 
             }
@@ -75,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
             ArrayList<Plant> plants = new ArrayList<>();
             for (DocumentSnapshot doc: queryDocumentSnapshots) {
                 String image = doc.getString("Image");
+               // String description = doc.getString("Description");
                 String name = doc.getString("Name");
                 String water = doc.getString("Water");
                 String sun = doc.getString("Sun");
@@ -87,10 +91,11 @@ public class MainActivity extends AppCompatActivity {
             Plant randomPlant = plants.get(random.nextInt(plants.size()));
 
             Picasso.get().load(randomPlant.getImage()).into(PlantImage);
-            NameText.setText(randomPlant.getName());
-            WaterText.setText(randomPlant.getWater());
-            SunText.setText(randomPlant.getSun());
-            //     Log.d("Name text is ", randomPlant.getName());
+            NameText.setText("Name: " + randomPlant.getName());
+            //DescriptionText.setText(randomPlant.getDescription());
+
+            WaterText.setText("Water: " + randomPlant.getWater());
+            SunText.setText("Sun: " + randomPlant.getSun());
         });
     }
 
