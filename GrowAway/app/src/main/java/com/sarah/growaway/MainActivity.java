@@ -71,11 +71,11 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, RecommendedPlants.class);
                 startActivity(intent);
 
-                db = FirebaseFirestore.getInstance();
+            /*    db = FirebaseFirestore.getInstance();
                 PlantImage = findViewById(R.id.plantImage);
                 NameText = findViewById(R.id.name_text);
                 WaterText = findViewById(R.id.water_text);
-                SunText = findViewById(R.id.sun_text);
+                SunText = findViewById(R.id.sun_text);*/
                // DescriptionText = findViewById(R.id.description_text);
 
 
