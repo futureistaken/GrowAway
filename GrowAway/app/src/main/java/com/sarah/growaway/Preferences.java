@@ -11,6 +11,7 @@ import android.widget.RadioGroup;
 
 public class Preferences extends AppCompatActivity {
 
+    //Do these need to be called in On create???
     SavedFilters savedFilters = new SavedFilters();
     RadioGroup radioGroup = findViewById(R.id.waterRadio);
     SeekBar seekBar = findViewById(R.id.sunBar);
@@ -23,6 +24,8 @@ public class Preferences extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preferences);
 
+
+
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -31,7 +34,8 @@ public class Preferences extends AppCompatActivity {
         });
 
 
-    }
+        }
+
 
     public void saveFilters() {
         savedFilters.sunlightAmount = seekBar.getProgress();
