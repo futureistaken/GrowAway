@@ -37,15 +37,53 @@ public class RecommendedPlants extends AppCompatActivity {
     private TextView WaterText;
     private TextView SunText;
     private ImageView PlantImage;
+    private ListView listView;
 
     private String name;
+    private RecommendedPlantsAdapter rpAdapter;
 
 
 
-    @Override
+
+    private ArrayList<Plant> getPlants() {
+        ArrayList<Plant> plants = new ArrayList<>();
+
+
+        db.collection("plants").get().addOnSuccessListener(queryDocumentSnapshots -> {
+            //ArrayList<Plant> plants = new ArrayList<>();
+            for (DocumentSnapshot doc : queryDocumentSnapshots) {
+                String image = doc.getString("Image");
+                //String description = doc.getString("Description");
+                String name = doc.getString("Name");
+                String water = doc.getString("Water");
+                String sun = doc.getString("Sun");
+
+
+                plants.add(new Plant(image, name, water, sun));
+                Log.d("plant is added", plants.size() + "");
+            }
+
+        });
+
+
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        Log.d("total plants are added", plants.size() + "");
+
+
+        return plants;
+    }
+
+
+        @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recommended_plants);
+
 
         db = FirebaseFirestore.getInstance();
         PlantImage = findViewById(R.id.plantImage);
@@ -53,16 +91,36 @@ public class RecommendedPlants extends AppCompatActivity {
         WaterText = findViewById(R.id.water_text);
         SunText = findViewById(R.id.sun_text);
 
+
+
+
+        Log.d("gotten to the sticky part", "sticky part");
+        listView = (ListView)findViewById(R.id.images_list);
         ArrayList<Plant> plantList = getPlants();
 
-        /*ListView listView = new ListView(getApplicationContext());
-        RecommendedPlantsAdapter myAdapter = new RecommendedPlantsAdapter(getApplicationContext(), plantList);
+        Log.d("past accessing list view", "past");
+        rpAdapter = new RecommendedPlantsAdapter(this, plantList);
+        // the line above is the problem!!!
+        Log.d("plant list", plantList.size() +"");
+        listView.setAdapter(rpAdapter);
 
-        listView.setAdapter(myAdapter);*/
+
+
+    }
 
 
 
-        /*toPref = findViewById(R.id.toPrefButton);
+
+
+
+
+
+
+
+}
+
+
+/*toPref = findViewById(R.id.toPrefButton);
         toPref.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -73,68 +131,3 @@ public class RecommendedPlants extends AppCompatActivity {
 
 
         });*/
-
-
-
-
-
-    }
-
-
-
-    private ArrayList<Plant> getPlants() {
-        ArrayList<Plant> plants = new ArrayList<>();
-        db.collection("plants").get().addOnSuccessListener(queryDocumentSnapshots -> {
-
-            for (DocumentSnapshot doc : queryDocumentSnapshots) {
-                String image = doc.getString("Image");
-                //String description = doc.getString("Description");
-                String name = doc.getString("Name");
-                String water = doc.getString("Water");
-                String sun = doc.getString("Sun");
-
-
-                plants.add(new Plant(image, name, water, sun));
-            }
-        });
-        //want to wait until database function is done
-        //FirebaseListAdapter returns an adapter
-        return plants;
-
-    }
-
-
-
-
-
- /*   private void populateRandomProfile() {
-        db.collection("plants").get().addOnSuccessListener(queryDocumentSnapshots -> {
-            ArrayList<Plant> plants = new ArrayList<>();
-            for (DocumentSnapshot doc: queryDocumentSnapshots) {
-                String image = doc.getString("Image");
-                String name = doc.getString("Name");
-                String water = doc.getString("Water");
-                String sun = doc.getString("Sun");
-
-
-              plants.add(new Plant(image, name, water, sun));
-            }
-
-            Random random = new Random();
-            Plant randomPlant = plants.get(random.nextInt(plants.size()));
-
-            Picasso.get().load(randomPlant.getImage()).into(PlantImage);
-            NameText.setText(randomPlant.getName());
-            WaterText.setText(randomPlant.getWater());
-            SunText.setText(randomPlant.getSun());
-       //     Log.d("Name text is ", randomPlant.getName());
-        });
-    }*/
-
-
-
-
-
-
-
-}
