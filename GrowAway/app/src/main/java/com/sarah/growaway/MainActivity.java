@@ -1,8 +1,14 @@
 package com.sarah.growaway;
 
 import androidx.appcompat.app.AppCompatActivity;
-        import android.content.Intent;
-        import android.os.Bundle;
+
+import android.content.Context;
+import android.content.Intent;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import android.os.Bundle;
         import android.view.View;
         import android.widget.Button;
         import android.os.Bundle;
@@ -27,18 +33,31 @@ public class MainActivity extends AppCompatActivity {
 
     private String name;
 
+    private SensorManager sM;
+    private float acelVal;
+    private float acelLast;
+    private float shake;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        sM = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        sM.registerListener(sensorListener, sM.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL);
+
+        acelVal = SensorManager.GRAVITY_EARTH;
+        acelLast = SensorManager.GRAVITY_EARTH;
+        shake = 0.00f;
+
+
 
         db = FirebaseFirestore.getInstance();
         PlantImage = findViewById(R.id.plantImage);
         NameText = findViewById(R.id.name_text);
         WaterText = findViewById(R.id.water_text);
         SunText = findViewById(R.id.sun_text);
-
-
 
 
         startButton = findViewById(R.id.startButton);
@@ -59,6 +78,34 @@ public class MainActivity extends AppCompatActivity {
 
         });
     }
+
+
+    private final SensorEventListener sensorListener = new SensorEventListener() {
+        @Override
+        public void onSensorChanged(SensorEvent sensorEvent) {
+
+            float x = sensorEvent.values[0];
+            float y = sensorEvent.values[1];
+            float z = sensorEvent.values[2];
+
+            acelLast = acelVal;
+            acelVal = (float) Math.sqrt((double) (x*x + y*y + z*z));
+            float delta = acelVal - acelLast;
+            shake = shake * 0.9f + delta;
+
+            if (shake > 12) {
+                System.out.println("Shake!");
+                populateRandomProfile();
+            }
+        }
+
+        @Override
+        public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+        }
+    };
+
+
 
 
     @Override
