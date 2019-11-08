@@ -15,4 +15,22 @@ tools:context=".RecommendedPlants">
         />
 
 
+    <Button
+        android:id="@+id/toPrefButton"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="195dp"
+        android:layout_marginTop="589dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="92dp"
+        android:fontFamily="casual"
+        android:text="Set Preferences"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

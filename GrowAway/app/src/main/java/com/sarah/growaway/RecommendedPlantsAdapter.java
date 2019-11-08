@@ -2,7 +2,8 @@ package com.sarah.growaway;
 
 import android.graphics.Bitmap;
         import android.graphics.BitmapFactory;
-        import android.widget.ArrayAdapter;
+import android.util.Log;
+import android.widget.ArrayAdapter;
         import android.content.Context;
 //import android.support.annotation.LayoutRes;
 //import android.support.annotation.NonNull;
@@ -18,7 +19,9 @@ import android.graphics.Bitmap;
 
         import com.firebase.ui.database.FirebaseListAdapter;
 
-        import androidx.annotation.Nullable;
+import androidx.annotation.LayoutRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.squareup.picasso.Picasso;
 
@@ -36,7 +39,7 @@ public class RecommendedPlantsAdapter extends ArrayAdapter<Plant> {
     // databaseHelper dbHelper = new databaseHelper(getContext());
 
 
-    public RecommendedPlantsAdapter(Context context, ArrayList<Plant> list){
+    public RecommendedPlantsAdapter(@NonNull Context context, @LayoutRes ArrayList<Plant> list){
         super(context, 0, list);
         this.context = context;
         this.plantList = list;
@@ -68,7 +71,8 @@ public class RecommendedPlantsAdapter extends ArrayAdapter<Plant> {
             listItem = LayoutInflater.from(context).inflate(R.layout.plant_card, parent, false);
         }
 
-        final Plant currentPlant = plantList.get(position);
+       // final Plant currentPlant = plantList.get(position);
+        Plant currentPlant = plantList.get(position);
 
         ImageView PlantImage = (ImageView)listItem.findViewById(R.id.plantImage);
         Picasso.get().load(currentPlant.getImage()).into(PlantImage);
@@ -84,6 +88,7 @@ public class RecommendedPlantsAdapter extends ArrayAdapter<Plant> {
         TextView sun = (TextView)listItem.findViewById(R.id.sun_text);
         sun.setText(currentPlant.getSun());
 
+        Log.d("gotten to list item", "done");
 
         return listItem;
 
