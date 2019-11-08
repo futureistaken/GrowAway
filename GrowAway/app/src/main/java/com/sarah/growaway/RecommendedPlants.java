@@ -104,7 +104,17 @@ public class RecommendedPlants extends AppCompatActivity {
         Log.d("plant list", plantList.size() +"");
         listView.setAdapter(rpAdapter);
 
+        toPref = findViewById(R.id.toPrefButton);
+        toPref.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RecommendedPlants.this, Preferences.class);
+                startActivity(intent);
 
+            }
+
+
+        });
 
     }
 
