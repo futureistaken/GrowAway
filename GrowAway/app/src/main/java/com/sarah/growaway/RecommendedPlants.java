@@ -66,11 +66,11 @@ public class RecommendedPlants extends AppCompatActivity {
         });
 
 
-        try {
+       /* try {
             Thread.sleep(20000);
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }
+        }*/
 
         Log.d("total plants are added", plants.size() + "");
 
