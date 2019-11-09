@@ -35,7 +35,7 @@ public class RecommendedPlantsAdapter extends ArrayAdapter<Plant> {
     private List<Plant> plantList = new ArrayList<>();
 
 
-    public RecommendedPlantsAdapter(@NonNull Context context, @LayoutRes ArrayList<Plant> list){
+    public RecommendedPlantsAdapter(Context context, ArrayList<Plant> list){
         super(context, 0, list);
         this.context = context;
         this.plantList = list;

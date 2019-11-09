@@ -23,6 +23,9 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.Random;
 
+
+// Notes: Have not implemented Description text yet, so it is commented out.
+
 public class MainActivity extends AppCompatActivity {
     Button startButton;
     private FirebaseFirestore db;
@@ -44,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //This code instantiates a sensor for shake to change random plant functionality
+
         sM = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         sM.registerListener(sensorListener, sM.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL);
 
@@ -61,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
+        //Button to move to recommended plants page
         startButton = findViewById(R.id.startButton);
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
+    //This function actually calls the populate Random Profile function.
     @Override
     protected void onResume() {
         super.onResume();
@@ -113,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
+    // This function connects to Firebase table, and populates an array list plants
 
     private void populateRandomProfile() {
         db.collection("plants").get().addOnSuccessListener(queryDocumentSnapshots -> {

@@ -60,11 +60,11 @@ public class RecommendedPlants extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.images_list);
         ArrayList<Plant> plantList = getPlants();
 
+        //Next two lines of code set a new adapter and populate it with the arraylist of plants
         rpAdapter = new RecommendedPlantsAdapter(this, plantList);
-
         listView.setAdapter(rpAdapter);
 
-
+    // This code sets up button to preferences page
         toPref = findViewById(R.id.toPrefButton);
         toPref.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,10 +79,9 @@ public class RecommendedPlants extends AppCompatActivity {
 
     }
 
-
+    // This function gets the plants from the database, puts it in the arraylist plants.
     private ArrayList<Plant> getPlants() {
         ArrayList<Plant> plants = new ArrayList<>();
-
 
         db.collection("plants").get().addOnSuccessListener(queryDocumentSnapshots -> {
             for (DocumentSnapshot doc : queryDocumentSnapshots) {
