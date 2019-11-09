@@ -60,9 +60,8 @@ public class RecommendedPlants extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.images_list);
         ArrayList<Plant> plantList = getPlants();
 
-        Log.d("past accessing list view", "past");
         rpAdapter = new RecommendedPlantsAdapter(this, plantList);
-        Log.d("plant list", plantList.size() + "");
+
         listView.setAdapter(rpAdapter);
 
 

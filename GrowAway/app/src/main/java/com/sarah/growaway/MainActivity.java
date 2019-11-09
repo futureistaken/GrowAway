@@ -25,7 +25,6 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
     Button startButton;
-    Button toPref;
     private FirebaseFirestore db;
     private TextView NameText;
     private TextView WaterText;
@@ -33,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
     private ImageView PlantImage;
    // private TextView DescriptionText;
 
-    private String name;
 
     private SensorManager sM;
     private float acelVal;
@@ -70,13 +68,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, RecommendedPlants.class);
                 startActivity(intent);
-
-            /*    db = FirebaseFirestore.getInstance();
-                PlantImage = findViewById(R.id.plantImage);
-                NameText = findViewById(R.id.name_text);
-                WaterText = findViewById(R.id.water_text);
-                SunText = findViewById(R.id.sun_text);*/
-               // DescriptionText = findViewById(R.id.description_text);
 
 
             }
