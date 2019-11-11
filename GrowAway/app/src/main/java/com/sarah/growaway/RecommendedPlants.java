@@ -1,6 +1,7 @@
 package com.sarah.growaway;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -43,43 +44,7 @@ public class RecommendedPlants extends AppCompatActivity {
     private RecommendedPlantsAdapter rpAdapter;
 
 
-
-
-    private ArrayList<Plant> getPlants() {
-        ArrayList<Plant> plants = new ArrayList<>();
-
-
-        db.collection("plants").get().addOnSuccessListener(queryDocumentSnapshots -> {
-            //ArrayList<Plant> plants = new ArrayList<>();
-            for (DocumentSnapshot doc : queryDocumentSnapshots) {
-                String image = doc.getString("Image");
-                //String description = doc.getString("Description");
-                String name = doc.getString("Name");
-                String water = doc.getString("Water");
-                String sun = doc.getString("Sun");
-
-
-                plants.add(new Plant(image, name, water, sun));
-                Log.d("plant is added", plants.size() + "");
-            }
-
-        });
-
-
-        try {
-            Thread.sleep(20000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        Log.d("total plants are added", plants.size() + "");
-
-
-        return plants;
-    }
-
-
-        @Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recommended_plants);
@@ -92,20 +57,16 @@ public class RecommendedPlants extends AppCompatActivity {
         SunText = findViewById(R.id.sun_text);
 
 
-
-
-        Log.d("gotten to the sticky part", "sticky part");
-        listView = (ListView)findViewById(R.id.images_list);
+        listView = (ListView) findViewById(R.id.images_list);
         ArrayList<Plant> plantList = getPlants();
 
-        Log.d("past accessing list view", "past");
+        //Next two lines of code set a new adapter and populate it with the arraylist of plants
         rpAdapter = new RecommendedPlantsAdapter(this, plantList);
-        // the line above is the problem!!!
-        Log.d("plant list", plantList.size() +"");
         listView.setAdapter(rpAdapter);
 
+    // This code sets up button to preferences page
         toPref = findViewById(R.id.toPrefButton);
-        toPref.setOnClickListener(new View.OnClickListener(){
+        toPref.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(RecommendedPlants.this, Preferences.class);
@@ -118,26 +79,25 @@ public class RecommendedPlants extends AppCompatActivity {
 
     }
 
+    // This function gets the plants from the database, puts it in the arraylist plants.
+    private ArrayList<Plant> getPlants() {
+        ArrayList<Plant> plants = new ArrayList<>();
 
+        db.collection("plants").get().addOnSuccessListener(queryDocumentSnapshots -> {
+            for (DocumentSnapshot doc : queryDocumentSnapshots) {
+                String image = doc.getString("Image");
+                //String description = doc.getString("Description");
+                String name = doc.getString("Name");
+                String water = doc.getString("Water");
+                String sun = doc.getString("Sun");
 
+                plants.add(new Plant(image, name, water, sun));
+            }
+            rpAdapter.notifyDataSetChanged();
+        });
 
-
-
-
-
+        return plants;
+    }
 
 
 }
-
-
-/*toPref = findViewById(R.id.toPrefButton);
-        toPref.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(RecommendedPlants.this, Preferences.class);
-                startActivity(intent);
-
-            }
-
-
-        });*/
