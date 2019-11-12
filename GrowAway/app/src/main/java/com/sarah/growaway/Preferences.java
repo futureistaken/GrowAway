@@ -3,20 +3,17 @@ package com.sarah.growaway;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.SearchRecentSuggestionsProvider;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.SeekBar;
-import android.widget.Switch;
 import android.widget.RadioGroup;
 
 public class Preferences extends AppCompatActivity {
 
     RadioGroup radioGroup;
     SeekBar seekBar;
-    //Switch maintenanceSwitch = findViewById(R.id.maintenanceSwitch);
     Button saveButton;
 
     private String sunValue;

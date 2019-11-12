@@ -5,14 +5,12 @@ import android.content.Context;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -140,8 +138,6 @@ public class MainActivity extends AppCompatActivity {
 
             Picasso.get().load(randomPlant.getImage()).into(PlantImage);
             NameText.setText("Name: " + randomPlant.getName());
-            //DescriptionText.setText(randomPlant.getDescription());
-
             WaterText.setText("Water: " + randomPlant.getWater());
             SunText.setText("Sun: " + randomPlant.getSun());
         });

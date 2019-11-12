@@ -1,19 +1,11 @@
 package com.sarah.growaway;
 
-import java.util.List;
-
 public class Plant {
     private String Image;
  //   private String Description;
     private String Name;
     private String Water;
     private String Sun;
-
-
-public Plant(){
-
-
-}
 
 public void setImage(String Image) {this.Image = Image;}
 
