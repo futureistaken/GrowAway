@@ -75,7 +75,8 @@ public class RecommendedPlantsAdapter extends ArrayAdapter<Plant> {
 
     }
 
-
-
-
+    @Override
+    public boolean isEnabled(int position) {
+        return false;
+    }
 }
