@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
             Plant randomPlant = plants.get(random.nextInt(plants.size()));
 
             Picasso.get().load(randomPlant.getImage()).into(PlantImage);
-            NameText.setText("Name: " + randomPlant.getName());
+            NameText.setText(randomPlant.getName());
             WaterText.setText("Water: " + randomPlant.getWater());
             SunText.setText("Sun: " + randomPlant.getSun());
         });
