@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
 
 
             //have to shake phone up and down hard
-            if (shake > 12) {
+            if (shake > 8) {
                 System.out.println("Shake!");
                 populateRandomProfile();
             }
