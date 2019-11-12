@@ -62,11 +62,11 @@ public class RecommendedPlantsAdapter extends ArrayAdapter<Plant> {
 
 
         TextView water = (TextView)listItem.findViewById(R.id.water_text);
-        water.setText(currentPlant.getWater());
+        water.setText("Water: " + currentPlant.getWater());
 
 
         TextView sun = (TextView)listItem.findViewById(R.id.sun_text);
-        sun.setText(currentPlant.getSun());
+        sun.setText("Sun: " + currentPlant.getSun());
 
 
         return listItem;
