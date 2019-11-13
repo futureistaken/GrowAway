@@ -42,7 +42,7 @@
         android:layout_marginTop="50dp"
         android:layout_marginLeft="20dp"
         android:layout_alignTop="@id/name_text"
-        android:textSize="15sp"
+        android:textSize="17sp"
         android:textColor="@color/light_blue_600"
         android:text="Water Amount"
 
@@ -55,7 +55,7 @@
         android:layout_marginTop="25dp"
         android:layout_marginLeft="20dp"
         android:layout_alignTop="@id/water_text"
-        android:textSize="15sp"
+        android:textSize="17sp"
         android:textColor="@color/amber_500"
         android:text="Sun Amount"
         />
