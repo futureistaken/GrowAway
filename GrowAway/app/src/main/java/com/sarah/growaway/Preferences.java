@@ -84,7 +84,7 @@ public class Preferences extends AppCompatActivity {
         public String sunBar_StringValue(int i){
         switch (i) {
             case 0:
-                sunValue = "low";
+                sunValue = "Low";
                 break;
             case 1:
                 sunValue = "Medium";
