@@ -6,10 +6,7 @@
     </shared>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fedc26e4-02bb-42c9-a818-d1f9e250048b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/plant_card.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/plant_card.xml" afterDir="false" />
-    </list>
+    <list default="true" id="fedc26e4-02bb-42c9-a818-d1f9e250048b" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/build/classes/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/app/build/" />
