@@ -107,6 +107,7 @@ tools:context=".Preferences">
     android:layout_marginEnd="40dp"
     android:layout_marginBottom="75dp"
     android:text="Apply Filters"
+    android:textSize="20dp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent" />
 
