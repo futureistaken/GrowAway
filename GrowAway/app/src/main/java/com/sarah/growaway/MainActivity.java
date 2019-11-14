@@ -26,6 +26,7 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
     Button startButton;
+    Button addPlantButton;
     private FirebaseFirestore db;
     private TextView NameText;
     private TextView WaterText;
@@ -64,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        //Button to move to recommended plants page
+        //Button to move to recommended plants page - SF
         startButton = findViewById(R.id.startButton);
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,6 +78,23 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
+
+
+        //Button to move to Add a Plant Page - SF
+        addPlantButton = findViewById(R.id.addPlantButton);
+        addPlantButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, AddaPlant.class);
+                intent.putExtra("uid","main");
+                startActivity(intent);
+
+
+            }
+
+        });
+
+
     }
 
     private final SensorEventListener sensorListener = new SensorEventListener() {

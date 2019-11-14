@@ -11,9 +11,10 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-        android:supportsRtl="true">
-        <activity android:name=".RecommendedPlants"></activity>
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".AddaPlant"></activity>
+        <activity android:name=".RecommendedPlants" />
         <activity android:name=".Preferences" />
         <activity android:name=".MainActivity">
             <intent-filter>
