@@ -57,12 +57,10 @@
             android:id="@+id/r0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="true"
             android:text="Every Day" />
 
         <RadioButton
             android:id="@+id/r1"
-            style="@android:style/Widget.Material.CompoundButton.RadioButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Every Other Day" />
@@ -99,8 +97,7 @@
         android:layout_marginTop="385dp"
         android:layout_marginEnd="21dp"
         android:layout_marginBottom="328dp"
-        android:max="2"
-        android:progress="1"
+        android:max="3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

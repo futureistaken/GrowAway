@@ -17,6 +17,9 @@ import com.google.firebase.storage.FirebaseStorage;
 import java.util.HashMap;
 import java.util.Map;
 import android.util.Log;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.SeekBar;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -35,16 +38,22 @@ public class AddaPlant extends AppCompatActivity {
 
 
 
-    Button backButton;
     Button uploadButton;
     Button choosePhotoButton;
     Button takePhotoButton;
-    EditText NameInput;
 
     private FirebaseFirestore db;
     FirebaseStorage storage;
-    //private String selectedUid = "4365402394";
     String uid;
+
+    EditText NameInput;
+
+    private String sunValue;
+    SeekBar seekBar;
+
+    RadioGroup radioGroup;
+    private int radioGroup_selectedID;
+    private String water_string;
 
 
     @Override
@@ -57,11 +66,43 @@ public class AddaPlant extends AppCompatActivity {
 
 
         // Need to handle opening camera and photos app
-        // Also have to take in input from Water and Sun fields
 
-
-
+        //Take in User input for name
         NameInput = (EditText)findViewById(R.id.NameInput);
+
+
+        //Take in User input for Water field
+        radioGroup = findViewById(R.id.waterInputRadio);
+        radioGroup_selectedID =  radioGroup.getCheckedRadioButtonId();
+        Log.d("selected ID is", radioGroup_selectedID+"");
+        RadioButton rb = findViewById(radioGroup_selectedID);
+        Log.d("rb is", rb+"");
+        if (rb != null)
+            water_string = rb.getText().toString();
+
+        //Set default value
+        if (water_string == null) water_string = "Every Day";
+
+        //take in User input for Sun fields
+        seekBar = findViewById(R.id.sunBar);
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                sunValue = sunBar_StringValue(progress);
+            }
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+        //Set default value
+        if (sunValue == null) sunValue = "Medium";
+
 
 
 
@@ -93,8 +134,8 @@ public class AddaPlant extends AppCompatActivity {
         //add a new document to the collection with name, water, sun
         Map<String, Object> plant = new HashMap<>();
         plant.put("Name", nameValue);
-        plant.put("Water", "James is");
-        plant.put("Sun", "The best");
+        plant.put("Water", water_string);
+        plant.put("Sun", sunValue);
 
         db.collection("plants").document(uid)
                 .set(plant)
@@ -125,6 +166,25 @@ public class AddaPlant extends AppCompatActivity {
 
     }
 
+    public String sunBar_StringValue(int i){
+        switch (i) {
+            case 1:
+                sunValue = "Low";
+                break;
+            case 2:
+                sunValue = "Medium";
+                break;
+            case 3:
+                sunValue = "High";
+                break;
+
+            default:
+                sunValue = "no value selected";
+        }
+
+        return sunValue;
+
+    }
 
 
 }
