@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
             for (DocumentSnapshot doc: queryDocumentSnapshots) {
                 // The line below sometimes throws the error - "Field 'Image' is not a
                 // Java.lang.string - just reload the app onto the emulator/device
-                // Was told to do this Nov 15 - SF
+                // Was told to do this by Vihang Nov 15 - SF
                 String image = doc.getString("Image");
                // String description = doc.getString("Description");
                 String name = doc.getString("Name");

@@ -57,24 +57,28 @@
             android:id="@+id/r0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
             android:text="Every Day" />
 
         <RadioButton
             android:id="@+id/r1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
             android:text="Every Other Day" />
 
         <RadioButton
             android:id="@+id/r2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
             android:text="Once a Week" />
 
         <RadioButton
             android:id="@+id/r3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
             android:text="Once a Month" />
     </RadioGroup>
 
@@ -83,10 +87,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
+        android:layout_marginTop="358dp"
         android:layout_marginBottom="8dp"
         android:text="Sunlight Amount Needed?  (Low, Medium, High)"
         app:layout_constraintBottom_toTopOf="@+id/sunBar"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <SeekBar
         android:id="@+id/sunBar"
@@ -94,9 +100,9 @@
         android:layout_width="351dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="39dp"
-        android:layout_marginTop="385dp"
+        android:layout_marginTop="393dp"
         android:layout_marginEnd="21dp"
-        android:layout_marginBottom="328dp"
+        android:layout_marginBottom="320dp"
         android:max="3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -137,13 +143,13 @@
 
     <Button
         android:id="@+id/takePhotoButton"
-        android:layout_width="189dp"
-        android:layout_height="56dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_marginStart="6dp"
         android:layout_marginTop="198dp"
         android:layout_marginEnd="216dp"
         android:layout_marginBottom="477dp"
-        android:text="Take a Photo"
+        android:foreground="@android:drawable/ic_menu_camera"
         android:textColor="@color/black"
         android:textSize="17dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -153,15 +159,29 @@
 
     <Button
         android:id="@+id/choosePhotoButton"
-        android:layout_width="189dp"
-        android:layout_height="56dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_marginStart="206dp"
         android:layout_marginTop="198dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="477dp"
-        android:text="Choose a photo"
+        android:foreground="@android:drawable/ic_menu_gallery"
         android:textColor="@color/black"
         android:textSize="17dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/mPhotoImageView"
+        android:layout_width="106dp"
+        android:layout_height="86dp"
+        android:layout_marginStart="147dp"
+        android:layout_marginTop="186dp"
+        android:layout_marginEnd="158dp"
+        android:layout_marginBottom="459dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
