@@ -1,14 +1,19 @@
 package com.sarah.growaway;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+
 import android.widget.ListView;
 import android.widget.Toast;
+
 import java.util.ArrayList;
 
 
@@ -37,41 +42,44 @@ public class RecommendedPlants extends AppCompatActivity {
         Intent it = this.getIntent();
 
 
-        if (it.getExtras().getString("uid").equals("filter")){
-
-            //reads the data from the preferences intent
-            String sun_it = it.getExtras().getString("sun_bar_value");
-            String water_it = it.getExtras().getString("water_lvl_value");
-
-
-
-            ArrayList<Plant> plantList = get_filtered_Plants(sun_it,water_it);
-            rpAdapter = new RecommendedPlantsAdapter(this, plantList);
-            listView.setAdapter(rpAdapter);
-
-
-
-        } else if (it.getExtras().getString("uid").equals("main")) {
+        if (it.getExtras().getString("uid").equals("main")) {
             ArrayList<Plant> plantList = getPlants();
             // Next two lines of code set a new adapter and populate it with the arraylist of plants - #sarah
             rpAdapter = new RecommendedPlantsAdapter(this, plantList);
             listView.setAdapter(rpAdapter);
         }
-        else Toast.makeText(this,"not intent has been called!",Toast.LENGTH_SHORT).show();
-
-    // This code sets up button to preferences page - #sarah
+        // This code sets up button to preferences page - #sarah
         toPref = findViewById(R.id.toPrefButton);
         toPref.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(RecommendedPlants.this, Preferences.class);
-                startActivity(intent);
-                
+                startActivityForResult(intent, 1);
 
             }
 
 
         });
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (data != null) {
+            //reads the data from the preferences intent
+            String sun_it = data.getExtras().getString("sun_bar_value");
+            String water_it = data.getExtras().getString("water_lvl_value");
+
+            ArrayList<Plant> plantList = get_filtered_Plants(sun_it, water_it);
+            rpAdapter = new RecommendedPlantsAdapter(this, plantList);
+            listView.setAdapter(rpAdapter);
+        } else {
+            ArrayList<Plant> plantList = getPlants();
+            // Next two lines of code set a new adapter and populate it with the arraylist of plants - #sarah
+            rpAdapter = new RecommendedPlantsAdapter(this, plantList);
+            listView.setAdapter(rpAdapter);
+        }
 
     }
 
@@ -96,12 +104,11 @@ public class RecommendedPlants extends AppCompatActivity {
     }
 
     // apply the filter and retrieve plant from database - #babak
-    public ArrayList<Plant> get_filtered_Plants(String sunlvl,String waterlvl) {
+    public ArrayList<Plant> get_filtered_Plants(String sunlvl, String waterlvl) {
         ArrayList<Plant> plants = new ArrayList<>();
 
         db.collection("plants").get().addOnSuccessListener(queryDocumentSnapshots -> {
-            for (DocumentSnapshot doc : queryDocumentSnapshots)
-            {
+            for (DocumentSnapshot doc : queryDocumentSnapshots) {
                 if (doc.getString("Water").equals(waterlvl) &&
                         doc.getString("Sun").equals(sunlvl)) {
 

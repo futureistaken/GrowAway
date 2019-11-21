@@ -28,11 +28,6 @@ public class Preferences extends AppCompatActivity {
         setContentView(R.layout.activity_preferences);
 
 
-
-
-
-
-
         // gets the sun and reads the value from it
         seekBar = findViewById(R.id.sunBar);
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -73,7 +68,8 @@ public class Preferences extends AppCompatActivity {
                 it.putExtra("sun_bar_value",sunValue);
                 it.putExtra("water_lvl_value",water_string);
                 it.putExtra("uid","filter");
-                startActivity(it);
+                setResult(1,it);
+                finish();
 
             }
         });
