@@ -47,12 +47,6 @@ import com.google.firebase.storage.UploadTask;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 
-import io.grpc.Context;
-
-/*
-Good reference link
-https://github.com/firebase/snippets-android/blob/f21c7a11e775e9423bf00b61ad5588a4bc72cb6a/storage/app/src/main/java/com/google/firebase/referencecode/storage/StorageActivity.java#L64-L64
-*/
 
 public class AddaPlant extends AppCompatActivity {
 
@@ -74,11 +68,8 @@ public class AddaPlant extends AppCompatActivity {
 
 
     ImageView mPhotoImageView;
-    Uri photoUri;
-    String imageUri;
 
-
-    String TestURL;
+    String fullURL;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -168,7 +159,7 @@ public class AddaPlant extends AppCompatActivity {
         //add a new document to the collection with name, water, sun
         Map<String, Object> plant = new HashMap<>();
         plant.put("Name", nameValue);
-        plant.put("Image", TestURL);
+        plant.put("Image", fullURL);
         plant.put("Water", water_string);
         plant.put("Sun", sunValue);
 
@@ -189,14 +180,17 @@ public class AddaPlant extends AppCompatActivity {
     }
 
 
-
+    // this function creates reference to image and path, and uploads it to Firebase Storage - sf
     public void UploadPhoto() {
+
+
         String nameValue = NameInput.getText().toString();
+        String photoName = nameValue + uid;
         // Create reference to full path of the file
             StorageReference storageRef = storage.getReference();
-            StorageReference plantRef = storageRef.child(nameValue + ".jpg"); //guid random id
+            StorageReference plantRef = storageRef.child(photoName + ".jpg"); //guid random id
 
-            StorageReference plantImageRef = storageRef.child("images/"+nameValue+".jpg");
+            StorageReference plantImageRef = storageRef.child("images/"+photoName+".jpg");
 
             plantRef.getName().equals(plantImageRef.getName());
             plantRef.getPath().equals(plantImageRef.getPath());
@@ -220,54 +214,12 @@ public class AddaPlant extends AppCompatActivity {
             }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    Toast.makeText(AddaPlant.this, "Image Uploaded Successfully", Toast.LENGTH_SHORT).show();
-                    Task<Uri> result = taskSnapshot.getMetadata().getReference().getDownloadUrl();
-                    result.addOnSuccessListener(new OnSuccessListener<Uri>() {
-                        @Override
-                        public void onSuccess(Uri uri) {
-                            TestURL = uri.toString();
-
-                        }
-                    });
-
-
-
-                    //TestURL = taskSnapshot.getMetadata().getReference().getDownloadUrl().toString();
-
-
-                    //TestURL = taskSnapshot.getStorage().getDownloadUrl().toString();
-
-
-
-
-                   // TestURL = taskSnapshot.getStorage().getDownloadUrl().getResult().toString();
-
-                    //Need to be aware of async tasks, have to finish UploadPhoto()
-                    //before starting UploadText()
+                    Toast.makeText(AddaPlant.this, "Plant Uploaded Successfully", Toast.LENGTH_SHORT).show();
+                    fullURL = "https://firebasestorage.googleapis.com/v0/b/plantdatabase-266a7.appspot.com/o/" + photoName + ".jpg?alt=media";
                     UploadText();
                     finish();
                 }
             });
-
-
-            //Possible Uri -> URL code?
-
-        //TestURL = storageRef.child("images/"+nameValue+".jpg").getDownloadUrl() + "";
-
-/*        storageRef.child("images/"+nameValue+".jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                // Got the download URL for 'users/me/profile.png' in uri
-                TestURL = uri + "";
-
-                //System.out.println(uri.toString());
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                // Handle any errors
-            }
-        });*/
 
 
     }
