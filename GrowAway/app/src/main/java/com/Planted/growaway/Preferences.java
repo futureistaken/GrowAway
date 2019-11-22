@@ -1,4 +1,4 @@
-package com.sarah.growaway;
+package com.Planted.growaway;
 
 import androidx.appcompat.app.AppCompatActivity;
 
