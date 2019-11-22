@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="185dp"
+        android:background="@drawable/card"
+        />
+
+    <ImageView
+        android:id="@+id/plantImage"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_margin="30dp"
+        tools:srcCompat="@tools:sample/avatars"
+
+        />
+
+
+    <TextView
+        android:id="@+id/name_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/plantImage"
+        android:layout_alignTop="@id/plantImage"
+        android:textSize="25sp"
+        android:textColor="@color/teal_600"
+        android:text="Plant Name"
+        />
+    <TextView
+        android:id="@+id/water_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/plantImage"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_alignTop="@id/name_text"
+        android:textSize="15sp"
+        android:textColor="@color/light_blue_600"
+        android:text="Water Amount"
+
+        />
+    <TextView
+        android:id="@+id/sun_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/plantImage"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="20dp"
+        android:layout_alignTop="@id/water_text"
+        android:textSize="15sp"
+        android:textColor="@color/amber_500"
+        android:text="Sun Amount"
+        />
+
+
+
+</RelativeLayout>
