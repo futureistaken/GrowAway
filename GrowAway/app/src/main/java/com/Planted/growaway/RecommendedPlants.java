@@ -1,4 +1,4 @@
-package com.sarah.growaway;
+package com.Planted.growaway;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,7 +12,6 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
