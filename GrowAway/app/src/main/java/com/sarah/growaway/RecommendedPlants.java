@@ -84,6 +84,7 @@ public class RecommendedPlants extends AppCompatActivity {
     }
 
     // This function gets the plants from the database, puts it in the arraylist plants - #sarah
+    // This code is adapted from Rishi's code - Thanks Rishi!
     public ArrayList<Plant> getPlants() {
         ArrayList<Plant> plants = new ArrayList<>();
 

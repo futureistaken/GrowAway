@@ -38,32 +38,36 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <ImageView
         android:id="@+id/plantImage"
-        android:layout_width="150dp"
-        android:layout_height="200dp"
+        android:layout_width="103dp"
+        android:layout_height="126dp"
+
         android:layout_marginStart="225dp"
-        android:layout_marginTop="241dp"
+        android:layout_marginTop="211dp"
         android:layout_marginEnd="36dp"
-        android:layout_marginBottom="290dp"
+        android:layout_marginBottom="320dp"
         android:contentDescription="Image of Plant"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.175" />
 
     <TextView
         android:id="@+id/name_text"
-        android:layout_width="186dp"
-        android:layout_height="65dp"
-        android:layout_marginStart="19dp"
-        android:layout_marginTop="248dp"
-        android:layout_marginEnd="206dp"
-        android:layout_marginBottom="418dp"
+        android:layout_width="224dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="46dp"
+        android:layout_marginTop="220dp"
+        android:layout_marginEnd="179dp"
+        android:layout_marginBottom="446dp"
         android:textColor="@color/teal_600"
         android:textSize="25sp"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -71,29 +75,31 @@
 
     <TextView
         android:id="@+id/water_text"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
+        android:layout_width="202dp"
+        android:layout_height="28dp"
 
-        android:layout_marginStart="57dp"
-        android:layout_marginTop="314dp"
-        android:layout_marginEnd="254dp"
-        android:layout_marginBottom="367dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="280dp"
+        android:layout_marginEnd="184dp"
+        android:layout_marginBottom="421dp"
+        android:textAlignment="center"
         android:textColor="@color/light_blue_600"
         android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+         />
 
     <TextView
         android:id="@+id/sun_text"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
+        android:layout_width="148dp"
+        android:layout_height="30dp"
 
-        android:layout_marginStart="57dp"
-        android:layout_marginTop="371dp"
-        android:layout_marginEnd="254dp"
-        android:layout_marginBottom="310dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="320dp"
+        android:layout_marginEnd="195dp"
+        android:layout_marginBottom="381dp"
         android:textColor="@color/amber_500"
         android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -117,6 +123,22 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.494" />
+        app:layout_constraintVertical_bias="0.489" />
+
+    <Button
+        android:id="@+id/addPlantButton"
+        android:layout_width="189dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="573dp"
+        android:layout_marginEnd="215dp"
+        android:layout_marginBottom="102dp"
+        android:text="Add a Plant!"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

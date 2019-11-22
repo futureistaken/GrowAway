@@ -26,6 +26,7 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
     Button startButton;
+    Button addPlantButton;
     private FirebaseFirestore db;
     private TextView NameText;
     private TextView WaterText;
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //This code instantiates a sensor for shake to change random plant functionality
-
+        // Adapted from Rishi's code - thanks Rishi!
         sM = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         sM.registerListener(sensorListener, sM.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL);
 
@@ -64,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        //Button to move to recommended plants page
+        //Button to move to recommended plants page - SF
         startButton = findViewById(R.id.startButton);
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,6 +78,23 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
+
+
+        //Button to move to Add a Plant Page - SF
+        addPlantButton = findViewById(R.id.addPlantButton);
+        addPlantButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, AddaPlant.class);
+                intent.putExtra("uid","main");
+                startActivity(intent);
+
+
+            }
+
+        });
+
+
     }
 
     private final SensorEventListener sensorListener = new SensorEventListener() {
@@ -123,6 +141,9 @@ public class MainActivity extends AppCompatActivity {
         db.collection("plants").get().addOnSuccessListener(queryDocumentSnapshots -> {
             ArrayList<Plant> plants = new ArrayList<>();
             for (DocumentSnapshot doc: queryDocumentSnapshots) {
+                // The line below sometimes throws the error - "Field 'Image' is not a
+                // Java.lang.string - just reload the app onto the emulator/device
+                // Was told to do this by Vihang Nov 15 - SF
                 String image = doc.getString("Image");
                // String description = doc.getString("Description");
                 String name = doc.getString("Name");
