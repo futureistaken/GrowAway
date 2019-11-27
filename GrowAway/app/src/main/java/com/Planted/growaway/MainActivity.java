@@ -28,10 +28,11 @@ public class MainActivity extends AppCompatActivity {
     Button startButton;
     Button addPlantButton;
     private FirebaseFirestore db;
-    private TextView NameText;
+    static TextView NameText,test;
     private TextView WaterText;
     private TextView SunText;
     private ImageView PlantImage;
+    static ImageView icon_img;
    // private TextView DescriptionText;
 
 
@@ -45,6 +46,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        test = findViewById(R.id.test_txt);
+        icon_img = findViewById(R.id.icon_img_view);
+        // start the an AsynkTask to read the weather data
+        Weather_data process = new Weather_data();
+        process.execute();
 
         //This code instantiates a sensor for shake to change random plant functionality
         // Adapted from Rishi's code - thanks Rishi!

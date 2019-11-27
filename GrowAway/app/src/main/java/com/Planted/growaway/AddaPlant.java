@@ -216,13 +216,13 @@ public class AddaPlant extends AppCompatActivity {
 
     public String sunBar_StringValue(int i) {
         switch (i) {
-            case 1:
+            case 0:
                 sunValue = "Low";
                 break;
-            case 2:
+            case 1:
                 sunValue = "Medium";
                 break;
-            case 3:
+            case 2:
                 sunValue = "High";
                 break;
 
