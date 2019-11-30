@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView SunText;
     private ImageView PlantImage;
     static ImageView icon_img;
+    static Context cx;
    // private TextView DescriptionText;
 
 
@@ -46,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        cx = this;
 
         test = findViewById(R.id.test_txt);
         icon_img = findViewById(R.id.icon_img_view);

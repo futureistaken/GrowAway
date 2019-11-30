@@ -1,6 +1,7 @@
 package com.Planted.growaway;
 
 import android.os.AsyncTask;
+import android.widget.Toast;
 
 import com.google.api.Http;
 import com.google.gson.JsonObject;
@@ -57,6 +58,10 @@ public class Weather_data extends AsyncTask <Void,Void,Void> {
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
         MainActivity.test.setText(MainActivity.test.getText()+this.data);
+        if (this.data.toLowerCase().contains("rain")){
+            Toast.makeText(MainActivity.cx,"Keep your low water plant inside",
+                    Toast.LENGTH_LONG).show();
+        }
         Weather_icon process = new Weather_icon();
         process.execute();
     }

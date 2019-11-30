@@ -94,12 +94,12 @@
 
     <ImageView
         android:id="@+id/icon_img_view"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="240dp"
-        android:layout_marginTop="454dp"></ImageView>
+        android:layout_marginStart="272dp"
+        android:layout_marginTop="466dp"></ImageView>
 
     <TextView
         android:id="@+id/test_txt"
@@ -108,9 +108,19 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="80dp"
-        android:layout_marginBottom="199dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginBottom="195dp"
         android:text="Today's weather: " />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="142dp"
+        android:layout_height="146dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="107dp"
+        app:srcCompat="@drawable/logo" />
 
 
 </RelativeLayout>
