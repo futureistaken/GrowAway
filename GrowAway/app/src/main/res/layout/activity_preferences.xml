@@ -107,10 +107,11 @@ tools:context=".Preferences">
         app:layout_constraintBaseline_toBaselineOf="@+id/favoritesSwitch"
         app:layout_constraintLeft_toRightOf="@+id/favoritesSwitch"
         android:text="Clear"
-        android:textColor="#CC0005"
-        style="@style/Widget.AppCompat.Button.Borderless"
         android:textAllCaps="false"
         android:textSize="17sp"
+        android:background="#ff726f"
+        android:minHeight="30dp"
+        android:minWidth="70dp"
         />
 
 <Button

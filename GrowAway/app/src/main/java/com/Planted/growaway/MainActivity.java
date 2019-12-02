@@ -74,7 +74,6 @@ public class MainActivity extends AppCompatActivity {
       //  DescriptionText = findViewById(R.id.description_text);
 
 
-
         //Button to move to recommended plants page - SF
         startButton = findViewById(R.id.startButton);
         startButton.setOnClickListener(new View.OnClickListener() {
