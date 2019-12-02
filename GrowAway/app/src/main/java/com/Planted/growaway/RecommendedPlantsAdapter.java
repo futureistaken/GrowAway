@@ -12,6 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import androidx.core.content.ContextCompat;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.squareup.picasso.Picasso;
@@ -28,16 +30,23 @@ public class RecommendedPlantsAdapter extends ArrayAdapter<Plant> {
     private List<Plant> plantList = new ArrayList<>();
     public static final String SHARED_PREFS = "sharedPrefs";
 
+    private List<Plant> favePlants;
+    private boolean favorited;
+
 
     public RecommendedPlantsAdapter(Context context, ArrayList<Plant> list){
         super(context, 0, list);
         this.context = context;
         this.plantList = list;
-
-
     }
 
 
+    public RecommendedPlantsAdapter(Context context, ArrayList<Plant> list, boolean favorited){
+        super(context, 0, list);
+        this.context = context;
+        this.plantList = list;
+        this.favorited = favorited;
+    }
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent){
@@ -64,6 +73,17 @@ public class RecommendedPlantsAdapter extends ArrayAdapter<Plant> {
 
         ImageButton favoriteStar = (ImageButton)listItem.findViewById(R.id.favoriteStar);
 
+        loadData();
+
+        if (favePlants.contains(currentPlant)) {
+            favoriteStar.setImageDrawable(ContextCompat.getDrawable(getContext(),android.R.drawable.btn_star_big_on));
+        }
+
+
+        if (favorited == true) {
+            favoriteStar.setImageDrawable(ContextCompat.getDrawable(getContext(),android.R.drawable.btn_star_big_on));
+        }
+
         favoriteStar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,6 +92,7 @@ public class RecommendedPlantsAdapter extends ArrayAdapter<Plant> {
                 loadData();
                 favePlants.add(currentPlant);
                 saveData();
+                favoriteStar.setImageDrawable(ContextCompat.getDrawable(getContext(),android.R.drawable.btn_star_big_on));
 
             }
         });
@@ -80,7 +101,6 @@ public class RecommendedPlantsAdapter extends ArrayAdapter<Plant> {
 
     }
 
-    ArrayList<Plant> favePlants;
 
     private void loadData() {
         SharedPreferences sharedPreferences = getContext().getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);

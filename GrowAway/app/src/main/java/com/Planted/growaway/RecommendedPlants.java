@@ -93,9 +93,8 @@ public class RecommendedPlants extends AppCompatActivity {
         if (data != null) {
             if (data.getExtras().getString("uid").equals("favorites"))
             {
-                System.out.println("Printing Favorites!");
                 loadFavorites();
-                rpAdapter = new RecommendedPlantsAdapter(this, favoritedPlants);
+                rpAdapter = new RecommendedPlantsAdapter(this, favoritedPlants, true);
                 listView.setAdapter(rpAdapter);
                 return;
             }
