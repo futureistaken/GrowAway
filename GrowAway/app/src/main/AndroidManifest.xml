@@ -19,7 +19,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".FavoritedPlants"></activity>
         <activity android:name=".AddaPlant" />
         <activity android:name=".RecommendedPlants" />
         <activity android:name=".Preferences" />

@@ -1,16 +1,22 @@
 package com.Planted.growaway;
 
+import android.content.SharedPreferences;
 import android.widget.ArrayAdapter;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.squareup.picasso.Picasso;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +26,7 @@ public class RecommendedPlantsAdapter extends ArrayAdapter<Plant> {
 
     private Context context;
     private List<Plant> plantList = new ArrayList<>();
+    public static final String SHARED_PREFS = "sharedPrefs";
 
 
     public RecommendedPlantsAdapter(Context context, ArrayList<Plant> list){
@@ -55,15 +62,48 @@ public class RecommendedPlantsAdapter extends ArrayAdapter<Plant> {
         TextView sun = (TextView)listItem.findViewById(R.id.sun_text);
         sun.setText("Sun: " + currentPlant.getSun());
 
+        ImageButton favoriteStar = (ImageButton)listItem.findViewById(R.id.favoriteStar);
+
+        favoriteStar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Toast.makeText(getContext(), "Favorited!", Toast.LENGTH_SHORT).show();
+                loadData();
+                favePlants.add(currentPlant);
+                saveData();
+
+            }
+        });
 
         return listItem;
 
-
-
     }
 
-    @Override
-    public boolean isEnabled(int position) {
-        return false;
+    ArrayList<Plant> favePlants;
+
+    private void loadData() {
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = sharedPreferences.getString("fave list", null);
+        Type type = new TypeToken<ArrayList<Plant>>() {}.getType();
+        favePlants = gson.fromJson(json, type);
+
+        if (favePlants == null) {
+            favePlants = new ArrayList<>();
+        }
     }
+
+    private void saveData() {
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(favePlants);
+        editor.putString("fave list", json);
+        editor.apply();
+        //Toast.makeText(getContext().getApplicationContext(), "Sucessfully Saved!", Toast.LENGTH_LONG).show();
+    }
+
+
+
 }

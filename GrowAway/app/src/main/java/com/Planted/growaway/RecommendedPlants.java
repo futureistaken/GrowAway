@@ -4,15 +4,21 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import android.widget.ListView;
+import android.widget.Toast;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 
@@ -23,6 +29,11 @@ public class RecommendedPlants extends AppCompatActivity {
 
     private String name;
     private RecommendedPlantsAdapter rpAdapter;
+
+    ArrayList<Plant> favoritedPlants;
+    public static final String SHARED_PREFS = "sharedPrefs";
+    ArrayList<Plant> allPlants = new ArrayList<>();
+    //ArrayList<Integer> favoritedPlantsInteger;
 
 
     @Override
@@ -39,6 +50,9 @@ public class RecommendedPlants extends AppCompatActivity {
 
         //intent checker - #babak
         Intent it = this.getIntent();
+
+
+
 
 
         if (it.getExtras().getString("uid").equals("main")) {
@@ -60,12 +74,31 @@ public class RecommendedPlants extends AppCompatActivity {
 
         });
 
+//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                Toast.makeText(getApplicationContext(), "Favorited!", Toast.LENGTH_LONG).show();
+//                if (!favoritedPlantsInteger.contains(position)) {
+//                    favoritedPlantsInteger.add(position);
+//                }
+//                saveFavorites();
+//            }
+//        });
+
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (data != null) {
+            if (data.getExtras().getString("uid").equals("favorites"))
+            {
+                System.out.println("Printing Favorites!");
+                loadFavorites();
+                rpAdapter = new RecommendedPlantsAdapter(this, favoritedPlants);
+                listView.setAdapter(rpAdapter);
+                return;
+            }
             //reads the data from the preferences intent
             String sun_it = data.getExtras().getString("sun_bar_value");
             String water_it = data.getExtras().getString("water_lvl_value");
@@ -125,6 +158,29 @@ public class RecommendedPlants extends AppCompatActivity {
         });
 
         return plants;
+    }
+
+
+    private void saveFavorites() {
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(favoritedPlants);
+        editor.putString("fave list", json);
+        editor.apply();
+        //Toast.makeText(getApplicationContext(), "Sucessfully Saved!", Toast.LENGTH_LONG).show();
+    }
+
+    private void loadFavorites() {
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = sharedPreferences.getString("fave list", null);
+        Type type = new TypeToken<ArrayList<Plant>>() {}.getType();
+        favoritedPlants = gson.fromJson(json, type);
+
+        if (favoritedPlants == null) {
+            favoritedPlants = new ArrayList<>();
+        }
     }
 
 

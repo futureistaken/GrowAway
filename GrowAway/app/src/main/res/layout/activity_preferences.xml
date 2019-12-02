@@ -90,15 +90,28 @@ tools:context=".Preferences">
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/sunBar" />
 
-<!--<Switch-->
-<!--    android:id="@+id/maintenanceSwitch"-->
-<!--    android:layout_width="wrap_content"-->
-<!--    android:layout_height="wrap_content"-->
-<!--    android:layout_marginTop="75dp"-->
-<!--    android:text="High Maintenance? "-->
-<!--    app:layout_constraintEnd_toEndOf="parent"-->
-<!--    app:layout_constraintStart_toStartOf="parent"-->
-<!--    app:layout_constraintTop_toBottomOf="@+id/waterRadio" />-->
+<Switch
+    android:id="@+id/favoritesSwitch"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="75dp"
+    android:text="Show Favorites "
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/waterRadio" />
+
+    <Button
+        android:id="@+id/clearFavoritesButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBaseline_toBaselineOf="@+id/favoritesSwitch"
+        app:layout_constraintLeft_toRightOf="@+id/favoritesSwitch"
+        android:text="Clear"
+        android:textColor="#CC0005"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:textAllCaps="false"
+        android:textSize="17sp"
+        />
 
 <Button
     android:id="@+id/saveButton"
@@ -110,5 +123,6 @@ tools:context=".Preferences">
     android:textSize="20dp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
