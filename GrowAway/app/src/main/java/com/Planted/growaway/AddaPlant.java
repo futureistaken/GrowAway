@@ -99,7 +99,7 @@ public class AddaPlant extends AppCompatActivity {
         //Take in User input for Water field
         //Using function OnRadioButtonClicked, written below onCreate function
         //Set default value
-        //if (water_string == null) water_string = "Every Day";
+        if (water_string == null) water_string = "";
 
         //take in User input for Sun fields
         seekBar = findViewById(R.id.sunBar);
@@ -120,7 +120,7 @@ public class AddaPlant extends AppCompatActivity {
             }
         });
         //Set default value
-        //if (sunValue == null) sunValue = "Medium";
+        if (sunValue == null) sunValue = "Low";
 
 
         // Next lines get the current date and time to serve
@@ -219,15 +219,13 @@ public class AddaPlant extends AppCompatActivity {
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     fullURL = "https://firebasestorage.googleapis.com/v0/b/plantdatabase-266a7.appspot.com/o/" + photoName + ".jpg?alt=media";
 
-                    Toast.makeText(AddaPlant.this, "Plant Uploaded Successfully", Toast.LENGTH_SHORT).show();
 
 
                     //UploadText();
                     if (UploadText() == true) {
-                        //Toast.makeText(AddaPlant.this, "Plant Uploaded Successfully", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AddaPlant.this, "Plant Uploaded Successfully", Toast.LENGTH_SHORT).show();
                         UploadText();
                         finish();
-                        Toast.makeText(AddaPlant.this, "Plant Uploaded Successfully", Toast.LENGTH_SHORT).show();
 
                     }
 
@@ -250,8 +248,8 @@ public class AddaPlant extends AppCompatActivity {
                 sunValue = "High";
                 break;
 
-            //default:
-               // sunValue = "no value selected";
+            default:
+                sunValue = "Low";
         }
 
         return sunValue;
