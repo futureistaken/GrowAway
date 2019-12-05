@@ -99,7 +99,7 @@ public class AddaPlant extends AppCompatActivity {
         //Take in User input for Water field
         //Using function OnRadioButtonClicked, written below onCreate function
         //Set default value
-        if (water_string == null) water_string = "Every Day";
+        //if (water_string == null) water_string = "Every Day";
 
         //take in User input for Sun fields
         seekBar = findViewById(R.id.sunBar);
@@ -120,7 +120,7 @@ public class AddaPlant extends AppCompatActivity {
             }
         });
         //Set default value
-        if (sunValue == null) sunValue = "Medium";
+        //if (sunValue == null) sunValue = "Medium";
 
 
         // Next lines get the current date and time to serve
@@ -142,8 +142,14 @@ public class AddaPlant extends AppCompatActivity {
 
     }
 
-    private void UploadText() {
+    private boolean UploadText() {
         String nameValue = NameInput.getText().toString();
+
+        if (nameValue.length() == 0 || water_string.length() == 0 || sunValue.length() == 0){
+            Toast.makeText(AddaPlant.this, "Please Input All information", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
 
         //add a new document to the collection with name, water, sun
         Map<String, Object> plant = new HashMap<>();
@@ -166,6 +172,7 @@ public class AddaPlant extends AppCompatActivity {
                         Log.w("done", "Error writing document", e);
                     }
                 });
+        return true;
     }
 
 
@@ -189,6 +196,13 @@ public class AddaPlant extends AppCompatActivity {
             // Get the data from an ImageView as bytes
             mPhotoImageView.setDrawingCacheEnabled(true);
             mPhotoImageView.buildDrawingCache();
+
+            //Catch no photo error
+            if (mPhotoImageView.getDrawable() == null){
+                Toast.makeText(AddaPlant.this, "Please Take or Choose a Photo", Toast.LENGTH_LONG).show();
+                return;
+            }
+
             Bitmap bitmap = ((BitmapDrawable) mPhotoImageView.getDrawable()).getBitmap();
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
@@ -203,10 +217,20 @@ public class AddaPlant extends AppCompatActivity {
             }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    Toast.makeText(AddaPlant.this, "Plant Uploaded Successfully", Toast.LENGTH_SHORT).show();
                     fullURL = "https://firebasestorage.googleapis.com/v0/b/plantdatabase-266a7.appspot.com/o/" + photoName + ".jpg?alt=media";
-                    UploadText();
-                    finish();
+
+                    Toast.makeText(AddaPlant.this, "Plant Uploaded Successfully", Toast.LENGTH_SHORT).show();
+
+
+                    //UploadText();
+                    if (UploadText() == true) {
+                        //Toast.makeText(AddaPlant.this, "Plant Uploaded Successfully", Toast.LENGTH_SHORT).show();
+                        UploadText();
+                        finish();
+                        Toast.makeText(AddaPlant.this, "Plant Uploaded Successfully", Toast.LENGTH_SHORT).show();
+
+                    }
+
                 }
             });
 
@@ -226,8 +250,8 @@ public class AddaPlant extends AppCompatActivity {
                 sunValue = "High";
                 break;
 
-            default:
-                sunValue = "no value selected";
+            //default:
+               // sunValue = "no value selected";
         }
 
         return sunValue;
