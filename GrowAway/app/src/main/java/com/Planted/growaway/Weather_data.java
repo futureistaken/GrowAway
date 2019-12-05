@@ -59,7 +59,7 @@ public class Weather_data extends AsyncTask <Void,Void,Void> {
         super.onPostExecute(aVoid);
         MainActivity.test.setText(MainActivity.test.getText()+this.data);
         if (this.data.toLowerCase().contains("rain")){
-            Toast.makeText(MainActivity.cx,"Keep your low water plant inside",
+            Toast.makeText(MainActivity.cx,"Keep your low water plants inside",
                     Toast.LENGTH_LONG).show();
         }
         Weather_icon process = new Weather_icon();

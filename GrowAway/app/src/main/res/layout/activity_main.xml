@@ -79,7 +79,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginStart="18dp"
         android:layout_marginBottom="80dp"
-        android:text="Add Plant" />
+        android:text="Add Plants" />
 
     <Button
         android:id="@+id/startButton"
@@ -90,7 +90,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginStart="230dp"
         android:layout_marginBottom="80dp"
-        android:text="Grow Plant"></Button>
+        android:text="Grow Plants"></Button>
 
     <ImageView
         android:id="@+id/icon_img_view"
