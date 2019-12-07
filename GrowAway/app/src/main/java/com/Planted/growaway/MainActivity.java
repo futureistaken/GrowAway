@@ -22,8 +22,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 
-// Notes: Have not implemented Description text yet, so it is commented out.
-
 public class MainActivity extends AppCompatActivity {
     Button startButton;
     Button addPlantButton;
@@ -34,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
     private ImageView PlantImage;
     static ImageView icon_img;
     static Context cx;
-   // private TextView DescriptionText;
 
 
     private SensorManager sM;
@@ -71,7 +68,6 @@ public class MainActivity extends AppCompatActivity {
         NameText = findViewById(R.id.name_text);
         WaterText = findViewById(R.id.water_text);
         SunText = findViewById(R.id.sun_text);
-      //  DescriptionText = findViewById(R.id.description_text);
 
 
         //Button to move to recommended plants page - SF
@@ -154,7 +150,6 @@ public class MainActivity extends AppCompatActivity {
                 // Java.lang.string - just reload the app onto the emulator/device
                 // Was told to do this by Vihang Nov 15 - SF
                 String image = doc.getString("Image");
-               // String description = doc.getString("Description");
                 String name = doc.getString("Name");
                 String water = doc.getString("Water");
                 String sun = doc.getString("Sun");

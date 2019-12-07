@@ -39,21 +39,7 @@ public class Weather_icon extends AsyncTask<Void,Void, Bitmap> {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        /*InputStream is = null;
-        try {
-            is = httpURLConnection.getInputStream();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Bitmap bitmap = BitmapFactory.decodeStream(is);
-        try {
-            is.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return bitmap;
-    }*/
-
+        
         try (InputStream is = httpURLConnection.getInputStream()) {
         Bitmap bitmap = BitmapFactory.decodeStream(is);
         return bitmap;

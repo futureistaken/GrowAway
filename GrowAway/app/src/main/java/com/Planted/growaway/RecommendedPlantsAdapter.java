@@ -73,11 +73,6 @@ public class RecommendedPlantsAdapter extends ArrayAdapter<Plant> {
 
         ImageButton favoriteStar = (ImageButton)listItem.findViewById(R.id.favoriteStar);
 
-        //loadData();
-
-//        if (favePlants.contains(currentPlant)) {
-//            favoriteStar.setImageDrawable(ContextCompat.getDrawable(getContext(),android.R.drawable.btn_star_big_on));
-//        }
 
 
         if (favorited == true) {
@@ -121,7 +116,6 @@ public class RecommendedPlantsAdapter extends ArrayAdapter<Plant> {
         String json = gson.toJson(favePlants);
         editor.putString("fave list", json);
         editor.apply();
-        //Toast.makeText(getContext().getApplicationContext(), "Sucessfully Saved!", Toast.LENGTH_LONG).show();
     }
 
 

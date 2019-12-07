@@ -68,7 +68,6 @@ public class Preferences extends AppCompatActivity {
         });
 
 
-        //Switch maintenanceSwitch = findViewById(R.id.maintenanceSwitch);
         saveButton = findViewById(R.id.saveButton);
 
         saveButton.setOnClickListener(new View.OnClickListener() {
@@ -126,7 +125,7 @@ public class Preferences extends AppCompatActivity {
 
         }
 
-        }
+}
 
 
 

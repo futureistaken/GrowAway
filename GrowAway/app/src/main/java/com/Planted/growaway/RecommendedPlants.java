@@ -33,7 +33,6 @@ public class RecommendedPlants extends AppCompatActivity {
     ArrayList<Plant> favoritedPlants;
     public static final String SHARED_PREFS = "sharedPrefs";
     ArrayList<Plant> allPlants = new ArrayList<>();
-    //ArrayList<Integer> favoritedPlantsInteger;
 
 
     @Override
@@ -74,16 +73,6 @@ public class RecommendedPlants extends AppCompatActivity {
 
         });
 
-//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Toast.makeText(getApplicationContext(), "Favorited!", Toast.LENGTH_LONG).show();
-//                if (!favoritedPlantsInteger.contains(position)) {
-//                    favoritedPlantsInteger.add(position);
-//                }
-//                saveFavorites();
-//            }
-//        });
 
     }
 
@@ -122,7 +111,6 @@ public class RecommendedPlants extends AppCompatActivity {
         db.collection("plants").get().addOnSuccessListener(queryDocumentSnapshots -> {
             for (DocumentSnapshot doc : queryDocumentSnapshots) {
                 String image = doc.getString("Image");
-                //String description = doc.getString("Description");
                 String name = doc.getString("Name");
                 String water = doc.getString("Water");
                 String sun = doc.getString("Sun");
@@ -145,7 +133,6 @@ public class RecommendedPlants extends AppCompatActivity {
                         doc.getString("Sun").equals(sunlvl)) {
 
                     String image = doc.getString("Image");
-                    //String description = doc.getString("Description");
                     String name = doc.getString("Name");
                     String water = doc.getString("Water");
                     String sun = doc.getString("Sun");
@@ -167,7 +154,6 @@ public class RecommendedPlants extends AppCompatActivity {
         String json = gson.toJson(favoritedPlants);
         editor.putString("fave list", json);
         editor.apply();
-        //Toast.makeText(getApplicationContext(), "Sucessfully Saved!", Toast.LENGTH_LONG).show();
     }
 
     private void loadFavorites() {

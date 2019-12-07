@@ -145,6 +145,7 @@ public class AddaPlant extends AppCompatActivity {
     private boolean UploadText() {
         String nameValue = NameInput.getText().toString();
 
+        //handles no user input
         if (nameValue.length() == 0 || water_string.length() == 0 || sunValue.length() == 0){
             Toast.makeText(AddaPlant.this, "Please Input All information", Toast.LENGTH_SHORT).show();
             return false;
@@ -220,8 +221,6 @@ public class AddaPlant extends AppCompatActivity {
                     fullURL = "https://firebasestorage.googleapis.com/v0/b/plantdatabase-266a7.appspot.com/o/" + photoName + ".jpg?alt=media";
 
 
-
-                    //UploadText();
                     if (UploadText() == true) {
                         Toast.makeText(AddaPlant.this, "Plant Uploaded Successfully", Toast.LENGTH_SHORT).show();
                         UploadText();
@@ -333,8 +332,6 @@ public class AddaPlant extends AppCompatActivity {
         Intent intent = new Intent(Intent.ACTION_PICK,
                 MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 
-        // If you call startActivityForResult() using an intent that no app can handle, your app will crash.
-        // So as long as the result is not null, it's safe to use the intent.
         if (intent.resolveActivity(getPackageManager()) != null) {
             // Bring up gallery to select a photo
             startActivityForResult(intent, PICK_PHOTO_CODE);
