@@ -55,7 +55,7 @@ public class Preferences extends AppCompatActivity {
         });
 
         favoritesSwitch = (Switch)findViewById(R.id.favoritesSwitch);
-
+        // This sets the clear favorites button which removes the list from local data
         clearFavoritesButton = findViewById(R.id.clearFavoritesButton);
         clearFavoritesButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,7 +69,7 @@ public class Preferences extends AppCompatActivity {
 
 
         saveButton = findViewById(R.id.saveButton);
-
+        // This save button will apply the filters
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

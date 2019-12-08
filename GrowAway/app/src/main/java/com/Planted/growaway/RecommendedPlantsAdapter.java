@@ -74,11 +74,11 @@ public class RecommendedPlantsAdapter extends ArrayAdapter<Plant> {
         ImageButton favoriteStar = (ImageButton)listItem.findViewById(R.id.favoriteStar);
 
 
-
+        // This sets the star image to filled if the plant has been previously favorited
         if (favorited == true) {
             favoriteStar.setImageDrawable(ContextCompat.getDrawable(getContext(),android.R.drawable.btn_star_big_on));
         }
-
+        // When the star button is clicked it will call these functions
         favoriteStar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,7 +96,7 @@ public class RecommendedPlantsAdapter extends ArrayAdapter<Plant> {
 
     }
 
-
+    // This function pulls the local favorited plants data
     private void loadData() {
         SharedPreferences sharedPreferences = getContext().getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
         Gson gson = new Gson();
@@ -109,6 +109,8 @@ public class RecommendedPlantsAdapter extends ArrayAdapter<Plant> {
         }
     }
 
+
+    // This function will save the current favorited plants to local data
     private void saveData() {
         SharedPreferences sharedPreferences = getContext().getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();

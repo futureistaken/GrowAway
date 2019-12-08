@@ -80,6 +80,7 @@ public class RecommendedPlants extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (data != null) {
+            // This checks to see if the intent is coming from a "show filters" filter
             if (data.getExtras().getString("uid").equals("favorites"))
             {
                 loadFavorites();
@@ -146,7 +147,7 @@ public class RecommendedPlants extends AppCompatActivity {
         return plants;
     }
 
-
+    // This functions saves the current favorited plants to local data
     private void saveFavorites() {
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -156,6 +157,7 @@ public class RecommendedPlants extends AppCompatActivity {
         editor.apply();
     }
 
+    // This function loads the favorited plants local data to be used to populate cards
     private void loadFavorites() {
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         Gson gson = new Gson();
