@@ -13,6 +13,7 @@ import java.net.URL;
 
 public class Weather_icon extends AsyncTask<Void,Void, Bitmap> {
 
+    // download and set's the weather Icon to the UI
     @Override
     protected Bitmap doInBackground(Void... voids) {
         URL url = null;

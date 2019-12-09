@@ -27,7 +27,7 @@ import java.nio.charset.Charset;
 public class Weather_data extends AsyncTask <Void,Void,Void> {
     String data = "";
     static String icon = "";
-
+    // process the API in the background and reads the JASON string
     @Override
     protected Void doInBackground(Void... voids) {
         try{
@@ -35,7 +35,7 @@ public class Weather_data extends AsyncTask <Void,Void,Void> {
                     "APPID=e89e583c78c2e72afd9d59d443a1ecd0";
             JSONObject json = readJsonFromUrl(url);
             JSONArray JA = json.getJSONArray("weather");
-
+            // extract the info from the internal array from the JSON string
             for (int i = 0;i<JA.length();i++){
                 JSONObject JO = (JSONObject) JA.get(i);
                 data = (String) JO.get("description");
